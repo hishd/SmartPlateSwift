@@ -16,6 +16,7 @@
 		FD84475928AD050900381FB7 /* SmartPlateSwiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD84475828AD050900381FB7 /* SmartPlateSwiftUITestsLaunchTests.swift */; };
 		FD84476628AD0C8300381FB7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD84476528AD0C8300381FB7 /* MainViewController.swift */; };
 		FD84476C28AD0D2F00381FB7 /* MainVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD84476B28AD0D2F00381FB7 /* MainVCViewModel.swift */; };
+		FDB814FE28AD47A20067F761 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB814FD28AD47A20067F761 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		FD84475828AD050900381FB7 /* SmartPlateSwiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPlateSwiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FD84476528AD0C8300381FB7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FD84476B28AD0D2F00381FB7 /* MainVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCViewModel.swift; sourceTree = "<group>"; };
+		FDB814FD28AD47A20067F761 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		FD84473428AD050600381FB7 /* SmartPlateSwift */ = {
 			isa = PBXGroup;
 			children = (
+				FDB814FC28AD47860067F761 /* Util */,
 				FD84476A28AD0D0B00381FB7 /* ViewModel */,
 				FD84476928AD0D0600381FB7 /* View */,
 				FD84476828AD0CFF00381FB7 /* Model */,
@@ -149,6 +152,14 @@
 				FD84476B28AD0D2F00381FB7 /* MainVCViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FDB814FC28AD47860067F761 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				FDB814FD28AD47A20067F761 /* Extensions.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDB814FE28AD47A20067F761 /* Extensions.swift in Sources */,
 				FD84476628AD0C8300381FB7 /* MainViewController.swift in Sources */,
 				FD84473628AD050600381FB7 /* AppDelegate.swift in Sources */,
 				FD84476C28AD0D2F00381FB7 /* MainVCViewModel.swift in Sources */,
