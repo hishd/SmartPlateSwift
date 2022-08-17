@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Combine
+import PhotosUI
 
 class MainViewController: UIViewController {
     private let viewModel: MainVCViewModel
@@ -73,6 +74,12 @@ class MainViewController: UIViewController {
     }()
     
     private lazy var imagePicker = UIImagePickerController()
+    
+    private lazy var phPickerConfiguration: PHPickerConfiguration = {
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .images
+        return configuration
+    }()
     
     init(viewModel: MainVCViewModel) {
         self.viewModel = viewModel
@@ -150,7 +157,9 @@ class MainViewController: UIViewController {
     }
     
     @objc private func handleUseGallery() {
-        
+        let picker = PHPickerViewController(configuration: phPickerConfiguration)
+        picker.delegate = self
+        self.present(picker, animated: true)
     }
 }
 
@@ -167,7 +176,32 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
             return
         }
         
-        self.imageView.image = image
+        DispatchQueue.main.async {
+            self.imageView.image = image
+        }
+        
         self.viewModel.processImage(image: image)
+    }
+}
+
+extension MainViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        guard let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) else {
+            return
+        }
+        
+        itemProvider.loadObject(ofClass: UIImage.self) { reading, error in
+            guard let image = reading as? UIImage, error == nil else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+            
+            self.viewModel.processImage(image: image)
+        }
     }
 }
