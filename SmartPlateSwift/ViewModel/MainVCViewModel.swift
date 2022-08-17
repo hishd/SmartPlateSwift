@@ -10,18 +10,9 @@ import Combine
 import UIKit
 
 class MainVCViewModel: ObservableObject {
-    @Published var selectedImage: UIImage?
     @Published var processedResult: String?
     
-    func captureImageFromCamera() {
-        
-    }
-    
-    func getImageFromGallery() {
-        
-    }
-    
-    func processImage() {
+    func processImage(image: UIImage) {
         
     }
 }
