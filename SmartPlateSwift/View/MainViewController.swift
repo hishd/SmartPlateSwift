@@ -7,9 +7,11 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class MainViewController: UIViewController {
     private let viewModel: MainVCViewModel
+    private var cancellables = Set<AnyCancellable>()
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -46,10 +48,10 @@ class MainViewController: UIViewController {
         return button
     }()
     
-//    private lazy var viewResult: UIView = {
-//        let view = UIView()
-//        return view
-//    }()
+    private lazy var resultStackView: UIStackView = {
+        let resultStackView = UIStackView()
+        return resultStackView
+    }()
     
     private lazy var labelResultCaption: UILabel = {
         let label = UILabel()
@@ -81,6 +83,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createUI()
+        setupObservers()
     }
     
     private func createUI() {
@@ -111,7 +114,6 @@ class MainViewController: UIViewController {
         stackView.anchor(top: labelPickImage.bottomAnchor, paddingTop: 20)
         stackView.centerX(inView: view)
         
-        let resultStackView = UIStackView()
         resultStackView.axis = .vertical
         resultStackView.spacing = 10
         resultStackView.addArrangedSubview(labelResultCaption)
@@ -122,11 +124,37 @@ class MainViewController: UIViewController {
         resultStackView.centerX(inView: view)
     }
     
-    @objc private func handleUseCamera() {
+    private func setupObservers() {
+        viewModel.$selectedImage
+            .receive(on: RunLoop.main)
+            .sink { [weak self] image in
+                guard let image = image else {
+                    return
+                }
+                self?.imageView.image = image
+                self?.viewModel.processImage()
+            }
+            .store(in: &cancellables)
         
+        viewModel.$processedResult
+            .receive(on: RunLoop.main)
+            .sink { [weak self] result in
+                guard let result = result else {
+                    self?.labelResultText.text = "Processing...."
+                    self?.resultStackView.isHidden = true
+                    return
+                }
+                self?.labelResultText.text = result
+                self?.resultStackView.isHidden = false
+            }
+            .store(in: &cancellables)
+    }
+    
+    @objc private func handleUseCamera() {
+        viewModel.captureImageFromCamera()
     }
     
     @objc private func handleUseGallery() {
-        
+        viewModel.getImageFromGallery()
     }
 }
