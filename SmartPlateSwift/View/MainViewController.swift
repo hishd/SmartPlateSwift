@@ -16,8 +16,9 @@ class MainViewController: UIViewController {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .white
+        imageView.layer.cornerRadius = 10
         return imageView
     }()
     
@@ -70,6 +71,8 @@ class MainViewController: UIViewController {
         label.textColor = .systemGray
         return label
     }()
+    
+    private lazy var imagePicker = UIImagePickerController()
     
     init(viewModel: MainVCViewModel) {
         self.viewModel = viewModel
@@ -125,17 +128,6 @@ class MainViewController: UIViewController {
     }
     
     private func setupObservers() {
-        viewModel.$selectedImage
-            .receive(on: RunLoop.main)
-            .sink { [weak self] image in
-                guard let image = image else {
-                    return
-                }
-                self?.imageView.image = image
-                self?.viewModel.processImage()
-            }
-            .store(in: &cancellables)
-        
         viewModel.$processedResult
             .receive(on: RunLoop.main)
             .sink { [weak self] result in
@@ -151,10 +143,31 @@ class MainViewController: UIViewController {
     }
     
     @objc private func handleUseCamera() {
-        viewModel.captureImageFromCamera()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true)
     }
     
     @objc private func handleUseGallery() {
-        viewModel.getImageFromGallery()
+        
+    }
+}
+
+extension MainViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        
+        self.imageView.image = image
+        self.viewModel.processImage(image: image)
     }
 }
