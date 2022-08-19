@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window = UIWindow(windowScene: scene)
         
-        let mainVCViewModel = MainVCViewModel()
+        let mainVCViewModel = MainVCViewModel(with: VisionTextRecognizer.shared)
         let mainVC = MainViewController(viewModel: mainVCViewModel)
         window?.rootViewController = UINavigationController(rootViewController: mainVC)
         window?.makeKeyAndVisible()

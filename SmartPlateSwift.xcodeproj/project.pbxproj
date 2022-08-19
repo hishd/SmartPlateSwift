@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD7E385028AFFC6400FAE0CE /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7E384F28AFFC6400FAE0CE /* TextRecognizer.swift */; };
+		FD7E385228AFFCA600FAE0CE /* VisionTextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7E385128AFFCA600FAE0CE /* VisionTextRecognizer.swift */; };
 		FD84473628AD050600381FB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD84473528AD050600381FB7 /* AppDelegate.swift */; };
 		FD84473828AD050600381FB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD84473728AD050600381FB7 /* SceneDelegate.swift */; };
 		FD84473F28AD050800381FB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD84473E28AD050800381FB7 /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD7E384F28AFFC6400FAE0CE /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
+		FD7E385128AFFCA600FAE0CE /* VisionTextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTextRecognizer.swift; sourceTree = "<group>"; };
 		FD84473228AD050600381FB7 /* SmartPlateSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartPlateSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD84473528AD050600381FB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD84473728AD050600381FB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +82,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD7E384E28AFFC5000FAE0CE /* Recognition */ = {
+			isa = PBXGroup;
+			children = (
+				FD7E384F28AFFC6400FAE0CE /* TextRecognizer.swift */,
+				FD7E385128AFFCA600FAE0CE /* VisionTextRecognizer.swift */,
+			);
+			path = Recognition;
+			sourceTree = "<group>";
+		};
 		FD84472928AD050600381FB7 = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +170,7 @@
 		FDB814FC28AD47860067F761 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				FD7E384E28AFFC5000FAE0CE /* Recognition */,
 				FDB814FD28AD47A20067F761 /* Extensions.swift */,
 			);
 			path = Util;
@@ -296,7 +310,9 @@
 				FD84476628AD0C8300381FB7 /* MainViewController.swift in Sources */,
 				FD84473628AD050600381FB7 /* AppDelegate.swift in Sources */,
 				FD84476C28AD0D2F00381FB7 /* MainVCViewModel.swift in Sources */,
+				FD7E385028AFFC6400FAE0CE /* TextRecognizer.swift in Sources */,
 				FD84473828AD050600381FB7 /* SceneDelegate.swift in Sources */,
+				FD7E385228AFFCA600FAE0CE /* VisionTextRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
