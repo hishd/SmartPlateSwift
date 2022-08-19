@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		FD7E385028AFFC6400FAE0CE /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7E384F28AFFC6400FAE0CE /* TextRecognizer.swift */; };
 		FD7E385228AFFCA600FAE0CE /* VisionTextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7E385128AFFCA600FAE0CE /* VisionTextRecognizer.swift */; };
+		FD7E385728B00E1600FAE0CE /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7E385628B00E1600FAE0CE /* Identifier.swift */; };
+		FD7E385928B00E5400FAE0CE /* ThreeDigitIdentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7E385828B00E5400FAE0CE /* ThreeDigitIdentification.swift */; };
+		FD7E385B28B0102A00FAE0CE /* TwoDigitIdentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7E385A28B0102A00FAE0CE /* TwoDigitIdentification.swift */; };
+		FD7E385D28B0107A00FAE0CE /* SriDigitIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7E385C28B0107A00FAE0CE /* SriDigitIdentifier.swift */; };
+		FD7E386028B010B000FAE0CE /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7E385F28B010B000FAE0CE /* Classifier.swift */; };
 		FD84473628AD050600381FB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD84473528AD050600381FB7 /* AppDelegate.swift */; };
 		FD84473828AD050600381FB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD84473728AD050600381FB7 /* SceneDelegate.swift */; };
 		FD84473F28AD050800381FB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD84473E28AD050800381FB7 /* Assets.xcassets */; };
@@ -41,6 +46,11 @@
 /* Begin PBXFileReference section */
 		FD7E384F28AFFC6400FAE0CE /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
 		FD7E385128AFFCA600FAE0CE /* VisionTextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTextRecognizer.swift; sourceTree = "<group>"; };
+		FD7E385628B00E1600FAE0CE /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		FD7E385828B00E5400FAE0CE /* ThreeDigitIdentification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDigitIdentification.swift; sourceTree = "<group>"; };
+		FD7E385A28B0102A00FAE0CE /* TwoDigitIdentification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoDigitIdentification.swift; sourceTree = "<group>"; };
+		FD7E385C28B0107A00FAE0CE /* SriDigitIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SriDigitIdentifier.swift; sourceTree = "<group>"; };
+		FD7E385F28B010B000FAE0CE /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		FD84473228AD050600381FB7 /* SmartPlateSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartPlateSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD84473528AD050600381FB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD84473728AD050600381FB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +99,25 @@
 				FD7E385128AFFCA600FAE0CE /* VisionTextRecognizer.swift */,
 			);
 			path = Recognition;
+			sourceTree = "<group>";
+		};
+		FD7E385528B00E0800FAE0CE /* Identification */ = {
+			isa = PBXGroup;
+			children = (
+				FD7E385628B00E1600FAE0CE /* Identifier.swift */,
+				FD7E385828B00E5400FAE0CE /* ThreeDigitIdentification.swift */,
+				FD7E385A28B0102A00FAE0CE /* TwoDigitIdentification.swift */,
+				FD7E385C28B0107A00FAE0CE /* SriDigitIdentifier.swift */,
+			);
+			path = Identification;
+			sourceTree = "<group>";
+		};
+		FD7E385E28B0108D00FAE0CE /* Classification */ = {
+			isa = PBXGroup;
+			children = (
+				FD7E385F28B010B000FAE0CE /* Classifier.swift */,
+			);
+			path = Classification;
 			sourceTree = "<group>";
 		};
 		FD84472928AD050600381FB7 = {
@@ -170,6 +199,8 @@
 		FDB814FC28AD47860067F761 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				FD7E385E28B0108D00FAE0CE /* Classification */,
+				FD7E385528B00E0800FAE0CE /* Identification */,
 				FD7E384E28AFFC5000FAE0CE /* Recognition */,
 				FDB814FD28AD47A20067F761 /* Extensions.swift */,
 			);
@@ -307,11 +338,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDB814FE28AD47A20067F761 /* Extensions.swift in Sources */,
+				FD7E385D28B0107A00FAE0CE /* SriDigitIdentifier.swift in Sources */,
 				FD84476628AD0C8300381FB7 /* MainViewController.swift in Sources */,
 				FD84473628AD050600381FB7 /* AppDelegate.swift in Sources */,
+				FD7E386028B010B000FAE0CE /* Classifier.swift in Sources */,
 				FD84476C28AD0D2F00381FB7 /* MainVCViewModel.swift in Sources */,
+				FD7E385B28B0102A00FAE0CE /* TwoDigitIdentification.swift in Sources */,
 				FD7E385028AFFC6400FAE0CE /* TextRecognizer.swift in Sources */,
+				FD7E385928B00E5400FAE0CE /* ThreeDigitIdentification.swift in Sources */,
 				FD84473828AD050600381FB7 /* SceneDelegate.swift in Sources */,
+				FD7E385728B00E1600FAE0CE /* Identifier.swift in Sources */,
 				FD7E385228AFFCA600FAE0CE /* VisionTextRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
