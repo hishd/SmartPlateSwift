@@ -12,7 +12,24 @@ import UIKit
 class MainVCViewModel: ObservableObject {
     @Published var processedResult: String?
     
+    let textRecognizer: TextRecognizer
+    
+    init(with textRecognizer: TextRecognizer) {
+        self.textRecognizer = textRecognizer
+    }
+    
     func processImage(image: UIImage) {
-        
+        do {
+            try textRecognizer.recognizeText(on: image) { result in
+                switch result {
+                case .success(let text):
+                    self.processedResult = text
+                case .failure(let error):
+                    self.processedResult = error.localizedDescription
+                }
+            }
+        } catch {
+            self.processedResult = error.localizedDescription
+        }
     }
 }

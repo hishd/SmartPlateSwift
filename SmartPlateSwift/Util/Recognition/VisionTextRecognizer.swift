@@ -30,7 +30,7 @@ class VisionTextRecognizer: TextRecognizer {
                 return
             }
             let text = observations.compactMap { observation in
-                observation.topCandidates(0).first?.string
+                observation.topCandidates(1).first?.string
             }.joined()
             
             callback(.success(text))
